@@ -26,7 +26,7 @@ class RulesController < ApplicationController
     @rule = Rule.new(rule_params)
    
     if @rule.save
-      redirect_to @rule, notice: 'Rule was successfully created.'
+      redirect_to root_path, notice: 'Rule was successfully created.'
     else
       @games = Game.all
       render :new
@@ -56,6 +56,6 @@ class RulesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def rule_params
-      params.require(:rule).permit(:game_id, :description, :document_pdf)
+      params.require(:rule).permit(:game_id, :description, :document_pdf, :game_pieces)
     end
 end

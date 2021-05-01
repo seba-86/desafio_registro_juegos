@@ -1,7 +1,7 @@
 class Rule < ApplicationRecord
     belongs_to :game
     has_one_attached :document_pdf
-    
+
     # Se crea una validacion customizada
     validate :correct_document_mime_type
 

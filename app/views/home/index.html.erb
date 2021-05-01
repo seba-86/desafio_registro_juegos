@@ -7,6 +7,7 @@
             <th>Imagen del juego </th>
             <th>Descripcion del juego </th>
             <th>Download</th>
+            <th>Game Pieces</th>
             <th colspan="3"></th>
         </tr>
     </thead>
@@ -20,6 +21,12 @@
                 <!-- <td><%= link_to "Descargar reglas", game.rule.document_pdf, download: game.rule.document_pdf %></td> Funciona igual-->
                 <td><%= link_to "Descargar Aqui", rails_blob_path(game.rule.document_pdf, disposition: "attachment") %></td>
             <%end %>
+            <% if game.game_pieces.attached? %>
+            <td><%= image_tag game.game_pieces.variant( resize: "100x100", colorspace: 'Gray').processed %></td>
+            <% end %>
+            <% if game.rule.blank? %>
+            <td><%= link_to 'Crear Reglas del juego', new_rule_path %></td>
+            <% end %>
         </tr>
         <% end %>
     </tbody>
