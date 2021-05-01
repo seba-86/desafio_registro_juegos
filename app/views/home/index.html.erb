@@ -1,0 +1,12 @@
+<%= render 'form', game: @game %>
+
+
+
+<ul>
+    <% @games.each do |game| %>
+
+    <li><%= game.name %></li>
+    <%= image_tag game.boardimage.variant( resize: "100x100", colorspace: 'Gray' ).processed %>
+
+    <% end %>
+</ul>
