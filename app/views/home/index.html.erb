@@ -1,16 +1,26 @@
 <%= render 'form', game: @game %>
 
-
-
-
+<table>
+    <thead>
+        <tr>
+            <th>Nombre del juego </th>
+            <th>Imagen del juego </th>
+            <th>Descripcion del juego </th>
+            <th>Download</th>
+            <th colspan="3"></th>
+        </tr>
+    </thead>
     <tbody>
         <% @games.each do |game| %>
-            <tr>
-                <td><%= game.name %></td>
-                <td><%= image_tag game.boardimage.variant( resize: "100x100", colorspace: 'Gray' ).processed %></td>
-                <% if game.rule.present? %>
-                    <td><%= game.rule.description %></td>
-                <%end %>
-            </tr>
+        <tr>
+            <td><%= game.name %></td>
+            <td><%= image_tag game.boardimage.variant( resize: "100x100", colorspace: 'Gray' ).processed %></td>
+            <% if game.rule.present? && game.rule.document_pdf.attached?%>
+                <td><%= game.rule.description %></td>
+                <!-- <td><%= link_to "Descargar reglas", game.rule.document_pdf, download: game.rule.document_pdf %></td> Funciona igual-->
+                <td><%= link_to "Descargar Aqui", rails_blob_path(game.rule.document_pdf, disposition: "attachment") %></td>
+            <%end %>
+        </tr>
         <% end %>
     </tbody>
+</table>                
