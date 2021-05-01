@@ -1,0 +1,32 @@
+<%= form_with(model: rule, local: true) do |form| %>
+<% if rule.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(rule.errors.count, "error") %> prohibited this rule from being saved:</h2>
+
+  <ul>
+    <% rule.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="field">
+  <%= form.collection_select :game_id, @games, :id, :name, include_blank: true %></td>
+
+</div>
+
+<div class="field">
+  <%= form.label :description %>
+  <%= form.text_field :description %>
+</div>
+
+<div class="field">
+  <%= form.label :document_pdf, "Add rules of the game's"%>
+  <%= form.file_field :document_pdf %>
+</div>
+
+<div class="actions">
+  <%= form.submit %>
+</div>
+<% end %>
