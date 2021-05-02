@@ -5,6 +5,7 @@
         <tr>
             <th>Nombre del juego </th>
             <th>Imagen del juego </th>
+            <th>Download img</th>
             <th>Descripcion del juego </th>
             <th>Download</th>
             <th>Game Pieces</th>
@@ -16,6 +17,7 @@
         <tr>
             <td><%= game.name %></td>
             <td><%= image_tag game.boardimage.variant( resize: "100x100", colorspace: 'Gray' ).processed %></td>
+            <td><%= link_to "Download-img", rails_blob_path(game.boardimage, disposition: 'attachment') %></td>
             <% if game.rule.present? && game.rule.document_pdf.attached?%>
                 <td><%= game.rule.description %></td>
                 <!-- <td><%= link_to "Descargar reglas", game.rule.document_pdf, download: game.rule.document_pdf %></td> Funciona igual-->

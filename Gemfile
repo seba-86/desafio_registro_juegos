@@ -31,6 +31,7 @@ gem 'turbolinks', '~> 5'
 # gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
 gem 'rails-erd', group: :development
+gem "aws-sdk-s3"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
